@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "knex": "^0.20.13",
+    "sqlite3": "^4.1.1"
+  }
 }
