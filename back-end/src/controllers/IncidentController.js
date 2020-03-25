@@ -2,7 +2,9 @@ const connection = require('../database/connection');
 
 module.exports = {
   async index(req, res) {
+    const incidents = connection('ongs').select('*');
 
+    return res.json(incidents);
   },
 
   async store(req, res) {
