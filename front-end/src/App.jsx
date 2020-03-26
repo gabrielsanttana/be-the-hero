@@ -1,9 +1,12 @@
 import React from 'react';
+
+import Routes from './routes';
+
 import './Global.css';
 
 function App() {
   return (
-    <h1>Be The Hero</h1>
+    <Routes />
   );
 }
 
