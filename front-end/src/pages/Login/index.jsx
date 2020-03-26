@@ -15,8 +15,13 @@ function Login() {
         <form>
           <h1>Faça seu login</h1>
 
-          <input type="text" name="" id=""/>
-          <button type="submit">Entrar</button>
+          <input 
+            type="text" 
+            autoFocus
+          />
+          <button type="submit" className="button">
+            Entrar
+          </button>
 
           <a href="/register">
             <FiLogIn
