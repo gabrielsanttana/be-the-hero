@@ -4,11 +4,15 @@ module.exports = {
   async index(req, res) {
     const {page = 1} = req.query;
 
+    const [count] = connection('incidents').count();
+
     const incidents = connection('ongs')
       .limit(5)
       .offset((page - 1) * 5)
       .select('*');
 
+    res.headers('X-Total-Count', count['count(*)']);
+    
     return res.json(incidents);
   },
 
