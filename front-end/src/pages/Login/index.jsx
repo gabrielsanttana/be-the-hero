@@ -18,6 +18,7 @@ function Login() {
           <input 
             type="text" 
             autoFocus
+            placeholder="Seu ID"
           />
           <button type="submit" className="button">
             Entrar
