@@ -28,7 +28,7 @@ function NewIncident() {
         <form>
           <input type="text" placeholder="Título do caso" autoFocus />
           <textarea placeholder="Descrição" />
-          <input type="text" placeholder="Valor em reais" />
+          <input type="text" placeholder="Valor em reais (somente o número)" />
 
           <div className="input-group">
             <button type="submit" className="button">
