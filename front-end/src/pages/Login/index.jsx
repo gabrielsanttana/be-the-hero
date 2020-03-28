@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {FiLogIn} from 'react-icons/fi';
+
+import api from '../../services/api';
 
 import logo from '../../assets/logo.svg';
 import heroes from '../../assets/heroes.png';
@@ -8,6 +10,8 @@ import heroes from '../../assets/heroes.png';
 import './styles.css';
 
 function Login() {
+  const [id, setID] = useState("");
+
   return (
     <div className="login-container">
       <section className="form">
@@ -20,6 +24,8 @@ function Login() {
             type="text" 
             autoFocus
             placeholder="Seu ID"
+            value={id}
+            onChange={(event) => setID(event.target.value)}
           />
           <button type="submit" className="button">
             Entrar
