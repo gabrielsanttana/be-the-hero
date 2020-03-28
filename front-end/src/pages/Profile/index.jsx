@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {FiPower} from 'react-icons/fi';
+import {FiPower, FiTrash2} from 'react-icons/fi';
 
 import logo from '../../assets/logo.svg';
 
@@ -10,7 +10,7 @@ export default function Profile() {
   return (
     <div className="profile-container">
       <header>
-        <img src={logo} alt="logo"/>
+        <img src={logo} alt="logo" />
 
         <p>Bem vinda, ONG</p>
 
@@ -40,6 +40,10 @@ export default function Profile() {
             <strong>VALOR:</strong>
 
             <p>R$120,00 reais</p>
+
+            <button>
+              <FiTrash2 size={20} color="#a8a8b3" />
+            </button>
           </li>
 
           <li>

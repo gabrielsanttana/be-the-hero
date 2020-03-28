@@ -21,6 +21,72 @@
 }
 
 .profile-container header a {
+  width: 260px;
+  margin-left: auto;
+  margin-top: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.profile-container header button {
+  height: 60px;
+  width: 60px;
+  border: 1px solid #dcdce6;
+  border-radius: 8px;
+  background-color: transparent;
+  margin-left: 16px;
+  transition: border-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-container header button:hover {
+  border-color: #999;
+}
+
+.profile-container .content h1 {
+  margin-top: 80px;
+  margin-bottom: 30px;
+  color: #41414d;
+}
+
+.profile-container .content ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 24px;
+  list-style: none;
+}
+
+.profile-container .content ul li {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  position: relative;
+}
+
+.profile-container .content ul li button {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  background-color: transparent;
+  border: 0;
+}
+
+.profile-container .content ul li strong {
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 16px;
+  color: #41414d;
+}
+
+.profile-container .content ul li p + strong {
+  margin-top: 32px;
+}
+
+.profile-container .content ul li p {
+  font-size: 1rem;
+  line-height: 21px;
+  color: #737380;
 }
