@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {FiPower} from 'react-icons/fi';
 
 import logo from '../../assets/logo.svg';
@@ -13,7 +14,7 @@ export default function Profile() {
 
         <p>Bem vinda, ONG</p>
 
-        <button>Cadastrar novo caso</button>
+        <Link to="/incidents/new" className="button">Cadastrar novo caso</Link>
 
         <button>  
           <FiPower size={16} color="#e02041" />
