@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {FiLogIn} from 'react-icons/fi';
 
 import api from '../../services/api';
@@ -12,12 +12,29 @@ import './styles.css';
 function Login() {
   const [id, setID] = useState("");
 
+  const history = useHistory();
+
+  async function handleLogin(event) {
+    event.preventDefault();
+
+    try {
+      const response = await api.post('/sessions', {id});
+
+      localStorage.setItem('ongID', id);
+      localStorage.setItem('ongsName', response.data.name);
+
+      history.push('/profile');
+    } catch(err) {
+      alert("Error ao efetuar o login. Tente novamente");
+    }
+  }
+
   return (
     <div className="login-container">
       <section className="form">
         <img src={logo} alt="logo"/>
 
-        <form>
+        <form onSubmit={handleLogin}>
           <h1>Faça seu login</h1>
 
           <input 
