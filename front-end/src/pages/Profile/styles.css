@@ -75,7 +75,7 @@
 }
 
 .profile-container .content ul li strong {
-  font-size: 1rem;
+  font-size:0.95rem;
   display: block;
   margin-bottom: 16px;
   color: #41414d;
@@ -86,7 +86,7 @@
 }
 
 .profile-container .content ul li p {
-  font-size: 1rem;
+  font-size:0.95rem;
   line-height: 21px;
   color: #737380;
 }

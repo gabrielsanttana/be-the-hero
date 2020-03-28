@@ -1,0 +1,79 @@
+.newIncident-container {
+  width: 100%;
+  max-width: 1120px;
+  height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.newIncident-container .content {
+  width: 100%;
+  padding: 96px;
+  background-color: #f0f0f5;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center ;
+}
+
+.newIncident-container section.title {
+  max-width: 350px;
+  width: 100%;
+  margin-right: 150px;
+}
+
+.newIncident-container section.title h1 {
+  font-size: 1.5rem;
+  margin: 64px 0 32px;
+}
+
+.newIncident-container section.title p {
+  font-size: 18px;
+  color: #737380;
+  line-height: 32px;
+}
+
+.newIncident-container section.title a {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #41414d;
+  transition: opacity 0.2s;
+}
+
+.newIncident-container section.title a:hover {
+  opacity: 0.8;
+} 
+
+.newIncident-container section.title svg {
+  margin-right: 5px;
+}
+
+.newIncident-container form {
+  max-width: 450px;
+  width: 100%;
+}
+
+.newIncident-container form input,
+.newIncident-container form textarea {
+  margin-top: 7px;
+}
+
+.newIncident-container form .input-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.newIncident-container form .input-group input + input {
+  margin-left: 5px;
+} 

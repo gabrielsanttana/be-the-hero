@@ -13,7 +13,7 @@ function Routes() {
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/newIncident" component={NewIncident} />
+        <Route exact path="/incidents/new" component={NewIncident} />
       </Switch>
     </BrowserRouter>
   );
