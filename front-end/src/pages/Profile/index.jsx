@@ -24,6 +24,20 @@ export default function Profile() {
     });
   }, [ongID]);
 
+  async function handleDeleteIncident(incident_id) {
+    try {
+      await api.delete(`/incidents/${incident_id}`, {
+        headers: {
+          Authorization: ongID,
+        }
+      });
+
+      setIncidents(incidents.filter(incident => incident.id !== incident_id));
+    } catch(err) {
+      alert('Erro ao excluir caso. Tente novamente');
+    }
+  }
+
   return (
     <div className="profile-container">
       <header>
@@ -31,7 +45,7 @@ export default function Profile() {
 
         <p>Bem vinda, {ongName}</p>
 
-        <Link to="/incidents/new" className="button">Cadastrar novo caso</Link>
+        <Link to="/incidents/new" className="button">Registrar novo caso</Link>
 
         <button>  
           <FiPower size={16} color="#e02041" />
@@ -39,31 +53,36 @@ export default function Profile() {
       </header>
 
       <div className="content">
-        <h1>Casos cadastrados</h1>
+        <h1>Casos registrados</h1>
       
-        <ul>
-          {incidents.map(({title, description, value}) => (
-            <li>
-              <strong>CASO:</strong>
+        {incidents.length >= 1 ?
+          <ul>
+            {incidents.map(({title, description, value, id}) => (
+              
+              <li>
+                <strong>CASO:</strong>
 
-              <p>{title}</p>
+                <p>{title}</p>
 
-              <strong>DESCRIÇÃO:</strong>
+                {console.log(incidents.length)}
 
-              <p>
-                {description}
-              </p>
+                <strong>DESCRIÇÃO:</strong>
 
-              <strong>VALOR:</strong>
+                <p>
+                  {description}
+                </p>
 
-              <p>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(value)}</p>
+                <strong>VALOR:</strong>
 
-              <button>
-                <FiTrash2 size={20} color="#a8a8b3" />
-              </button>
-            </li>
-          ))}
-        </ul>
+                <p>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(value)}</p>
+
+                <button onClick={() => handleDeleteIncident(id)}>
+                  <FiTrash2 size={20} color="#a8a8b3" />
+                </button>
+              </li>
+            ))}
+          </ul>
+        : <p className="no-incidents">Não há casos registrados no momento</p>}
       </div>
     </div>
   );

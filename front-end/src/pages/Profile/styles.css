@@ -95,3 +95,7 @@
   line-height: 21px;
   color: #737380;
 }
+
+.profile-container .content p.no-incidents {
+  text-align: center;
+}

@@ -13,7 +13,7 @@ function NewIncident() {
         <section className="title">
           <img src={logo} alt="logo" />
 
-          <h1>Cadastrar novo caso</h1>
+          <h1>Registrar novo caso</h1>
 
           <p>
             Descreva o caso detalhadamente para encontrar um herói para resolve-lo
@@ -36,7 +36,7 @@ function NewIncident() {
             </button>
 
             <button type="submit" className="button">
-              Cadastrar
+              Registrar
             </button>
           </div>
         </form>
