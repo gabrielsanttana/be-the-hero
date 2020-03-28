@@ -77,15 +77,9 @@ function NewIncident() {
             onChange={(event) => setValue(event.target.value)} 
           />
 
-          <div className="input-group">
-            <Link to="/profile" className="button">
-              Cancelar
-            </Link>
-
-            <button type="submit" className="button">
-              Registrar
-            </button>
-          </div>
+          <button type="submit" className="button">
+            Registrar
+          </button>
         </form>
       </div>
     </div>
