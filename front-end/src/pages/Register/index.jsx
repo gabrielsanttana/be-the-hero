@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {FiArrowLeft} from 'react-icons/fi';
+
+import api from '../../services/api';
 
 import logo from '../../assets/logo.svg';
 
 import './styles.css';
 
 function Register() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [city, setCity] = useState("");
+  const [UF, setUF] = useState("");
+
   return (
     <div className="register-container">
       <div className="content">
@@ -27,13 +35,40 @@ function Register() {
         </section>
 
         <form>
-          <input type="text" placeholder="Nome da ONG" autoFocus />
-          <input type="email" placeholder="E-mail" />
-          <input type="text" placeholder="Whatsapp" />
+          <input 
+            type="text" 
+            placeholder="Nome da ONG" 
+            autoFocus 
+            value={name}
+            onChange={(event) => setName(event.target.value)} 
+          />
+          <input 
+            type="email" 
+            placeholder="E-mail" 
+            value={email}
+            onChange={(event) => setEmail(event.target.value)} 
+          />
+          <input 
+            type="text" 
+            placeholder="Whatsapp" 
+            value={whatsapp}
+            onChange={(event) => setWhatsapp(event.target.value)} 
+          />
 
           <div className="input-group">
-            <input type="text" placeholder="Cidade" />
-            <input type="text" placeholder="UF" style={{width: 80}} />
+            <input 
+              type="text" 
+              placeholder="Cidade" 
+              value={city}
+              onChange={(event) => setCity(event.target.value)} 
+            />
+            <input 
+              type="text" 
+              placeholder="UF" 
+              style={{width: 80}} 
+              value={UF}
+              onChange={(event) => setUF(event.target.value)} 
+            />
           </div>
 
           <button type="submit" className="button">
