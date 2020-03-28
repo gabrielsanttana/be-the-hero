@@ -4,9 +4,9 @@ module.exports = {
   async index(req, res) {
     const {page = 1} = req.query;
 
-    const [count] = connection('incidents').count();
+    const [count] = await connection('incidents').count();
 
-    const incidents = connection('ongs')
+    const incidents = await connection('incidents')
       .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
       .limit(5)
       .offset((page - 1) * 5)
@@ -19,7 +19,7 @@ module.exports = {
         'ongs.uf',
       ]);
 
-    res.headers('X-Total-Count', count['count(*)']);
+    res.header('X-Total-Count', count['count(*)']);
     
     return res.json(incidents);
   },
@@ -28,7 +28,7 @@ module.exports = {
     const {title, description, value} = req.body;
     const ong_id = req.headers.authorization;
 
-    const [id] = await connection('ongs').insert({
+    const [id] = await connection('incidents').insert({
       title,
       description,
       value,
