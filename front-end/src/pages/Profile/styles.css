@@ -72,6 +72,11 @@
   top: 24px;
   background-color: transparent;
   border: 0;
+  transition: filter 0.2s;
+}
+
+.profile-container .content ul li button:hover {
+  filter: brightness(60%);
 }
 
 .profile-container .content ul li strong {
