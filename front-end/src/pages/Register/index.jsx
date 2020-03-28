@@ -15,6 +15,26 @@ function Register() {
   const [city, setCity] = useState("");
   const [UF, setUF] = useState("");
 
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const ongData = {
+      name,
+      email,
+      whatsapp,
+      city,
+      UF,
+    };
+
+    try {
+      const response = await api.post('/ongs', ongData);
+
+      alert(`Seu ID de acesso: ${response.data.id}`);
+    } catch(err) {
+      alert('Ocorreu um erro ao realizar seu cadastro. Tente novamente, por favor');
+    }
+  }
+
   return (
     <div className="register-container">
       <div className="content">
@@ -34,7 +54,7 @@ function Register() {
           </Link>
         </section>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <input 
             type="text" 
             placeholder="Nome da ONG" 
