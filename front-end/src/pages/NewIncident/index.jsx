@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {FiArrowLeft} from 'react-icons/fi';
+
+import api from '../../services/api';
 
 import logo from '../../assets/logo.svg';
 
@@ -10,6 +12,32 @@ function NewIncident() {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [value, setValue] = useState();
+
+  const ongID = localStorage.getItem('ongID');
+
+  const history = useHistory();
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const data = {
+      title,
+      description,
+      value,
+    };
+
+    try { 
+      await api.post('/incidents', data, {
+        headers: {
+          Authorization: ongID,
+        }
+      });
+
+      history.push('/profile');
+    } catch(err) {
+      alert('Erro ao registrar o incidente. Tente novamente');
+    }
+  }
 
   return (
     <div className="newIncident-container">
@@ -29,7 +57,7 @@ function NewIncident() {
           </Link>
         </section>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <input 
             type="text" 
             placeholder="Título do caso" 
@@ -50,9 +78,9 @@ function NewIncident() {
           />
 
           <div className="input-group">
-            <button type="submit" className="button">
+            <Link to="/profile" className="button">
               Cancelar
-            </button>
+            </Link>
 
             <button type="submit" className="button">
               Registrar
