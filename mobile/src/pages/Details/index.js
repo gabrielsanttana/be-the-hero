@@ -1,17 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {View, Text, TouchableOpacity, Image, Linking} from 'react-native';
 import {useNavigation} from '@react-navigation/native'
 import {Feather} from '@expo/vector-icons';
 import * as MailComposer from 'expo-mail-composer';
-import api from '../../services/api';
 
 import logo from '../../assets/logo.png';
 
 import styles from './styles';
 
 function Details() {
-  const [incidents, setIncidents] = useState([]);
-
   const navigation = useNavigation();
 
   const message = 'Olá APAD, estou entrando em contato pois gostaria de ajudar no "Cadelinha atropelada" no valor de R$120,00';
@@ -31,12 +28,6 @@ function Details() {
   function sendWhatsapp() {
     Linking.openURL(`whatsapp://send?&text=${message}`);
   }
-
-  useEffect(() => {
-    async function loadIncidents() {
-      const response = await api.get('/incidents');
-    }
-  }, []);
 
   return (
     <View style={styles.container}>

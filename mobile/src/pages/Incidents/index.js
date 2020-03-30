@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import {Feather} from '@expo/vector-icons';
 import {useNavigation} from '@react-navigation/native';
@@ -8,11 +8,23 @@ import logo from '../../assets/logo.png';
 import styles from './styles';
 
 function Incidents() {
+  const [incidents, setIncidents] = useState([]);
+
   const navigation = useNavigation();
 
   function navigateToDetails() {
     navigation.navigate('Details');
   }
+
+  async function loadIncidents() {
+    const response = await api.get('/incidents');
+
+    setIncidents(response.data);
+  }
+
+  useEffect(() => {
+    loadIncidents();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -29,20 +41,20 @@ function Incidents() {
       <Text style={styles.description}>Escolha um dos casos abaixo e salve o dia</Text>
 
       <FlatList 
-        data={[1, 2, 3]}
+        data={incidents}
         style={styles.incidentList}
         showsVerticalScrollIndicator={false}
         keyExtractor={incident => String(incident)}
-        renderItem={() => (
+        renderItem={({title, value, name}) => (
           <View style={styles.incidentCard}>
             <Text style={styles.incidentProperty}>CASO:</Text>
-            <Text style={styles.incidentValue}>Cadelinha atropelada</Text>
+            <Text style={styles.incidentValue}>{title}</Text>
 
             <Text style={styles.incidentProperty}>ONG:</Text>
-            <Text style={styles.incidentValue}>APAD</Text>
+            <Text style={styles.incidentValue}>{name}</Text>
 
             <Text style={styles.incidentProperty}>VALOR:</Text>
-            <Text style={styles.incidentValue}>R$ 120,00</Text>
+            <Text style={styles.incidentValue}>{value}</Text>
 
             <TouchableOpacity 
               style={styles.detailsButton}
