@@ -44,17 +44,17 @@ function Incidents() {
         data={incidents}
         style={styles.incidentList}
         showsVerticalScrollIndicator={false}
-        keyExtractor={incident => String(incident)}
-        renderItem={({title, value, name}) => (
+        keyExtractor={incident => String(incident.id)}
+        renderItem={({item: incident}) => (
           <View style={styles.incidentCard}>
             <Text style={styles.incidentProperty}>CASO:</Text>
-            <Text style={styles.incidentValue}>{title}</Text>
+            <Text style={styles.incidentValue}>{incident.title}</Text>
 
             <Text style={styles.incidentProperty}>ONG:</Text>
-            <Text style={styles.incidentValue}>{name}</Text>
+            <Text style={styles.incidentValue}>{incident.name}</Text>
 
             <Text style={styles.incidentProperty}>VALOR:</Text>
-            <Text style={styles.incidentValue}>{value}</Text>
+            <Text style={styles.incidentValue}>{incident.value}</Text>
 
             <TouchableOpacity 
               style={styles.detailsButton}
