@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {FiLogIn} from 'react-icons/fi';
+import {Modal} from 'react-bootstrap';
 
 import api from '../../services/api';
 
@@ -36,6 +37,7 @@ function Login() {
 
         <form onSubmit={handleLogin}>
           <h1>Faça seu login</h1>
+          <Modal/>
 
           <input 
             type="text" 
