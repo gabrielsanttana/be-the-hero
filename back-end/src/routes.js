@@ -11,7 +11,15 @@ const routes = Router();
 routes.post('/sessions', SessionController.store);
 
 routes.get('/ongs', OngController.index);
-routes.post('/ongs', OngController.store);
+routes.post('/ongs', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    name: Joi.string().required(),
+    email: Joi.string().required().email(),
+    whatsapp: Joi.number().required().min(10).max(11),
+    city: Joi.string().required(),
+    uf: Joi.string().required().length(2),
+  })
+}), OngController.store);
 
 routes.get('/incidents', IncidentController.index);
 routes.post('/incidents', IncidentController.store);
