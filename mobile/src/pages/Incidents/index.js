@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import {Feather} from '@expo/vector-icons';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 import logo from '../../assets/logo.png';
 
@@ -10,6 +10,8 @@ import styles from './styles';
 function Incidents() {
   const [incidents, setIncidents] = useState([]);
   const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
 
@@ -18,10 +20,24 @@ function Incidents() {
   }
 
   async function loadIncidents() {
-    const response = await api.get('/incidents');
+    if(loading) {
+      return;
+    } 
 
-    setIncidents(response.data);
-    setTotal(response.headers['x-total-count']);  
+    if(total > 0 && incidents.length === total) {
+      return;
+    }
+
+    setLoading(true);
+
+    const response = await api.get('/incidents', {
+      params: {page}
+    });
+    
+    setIncidents([...prevIncidents, ...response.data]);
+    setTotal(response.headers['x-total-count']);
+    setPage(page + 1);
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -47,6 +63,8 @@ function Incidents() {
         style={styles.incidentList}
         showsVerticalScrollIndicator={false}
         keyExtractor={incident => String(incident.id)}
+        onEndReached={loadIncidents}
+        onEndReachedThreshold={0.2}
         renderItem={({item: incident}) => (
           <View style={styles.incidentCard}>
             <Text style={styles.incidentProperty}>CASO:</Text>
