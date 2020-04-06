@@ -8,9 +8,16 @@ const ProfileController = require('./controllers/ProfileController');
 
 const routes = Router();
 
+routes.get('/profile', celebrate({
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.string().required(),
+  }).unknown(),
+}), ProfileController.index);
+
 routes.post('/sessions', SessionController.store);
 
 routes.get('/ongs', OngController.index);
+
 routes.post('/ongs', celebrate({
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string().required(),
@@ -21,15 +28,14 @@ routes.post('/ongs', celebrate({
   })
 }), OngController.store);
 
-routes.get('/incidents', celebrate({
+routes.get('/incidents',  celebrate({
   [Segments.HEADERS]: Joi.object({
-    authorization: Joi.string().required(),
-  }).unknown(),
+    page: Joi.number(),
+  })
 }), IncidentController.index);
 
 routes.post('/incidents', IncidentController.store);
-routes.delete('/incidents/:id', IncidentController.delete);
 
-routes.get('/profile', ProfileController.index);
+routes.delete('/incidents/:id', IncidentController.delete);
 
 module.exports = routes;
