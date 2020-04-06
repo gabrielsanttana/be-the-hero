@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image, Linking} from 'react-native';
-import {useNavigation} from '@react-navigation/native'
+import {useNavigation, useRoute} from '@react-navigation/native'
 import {Feather} from '@expo/vector-icons';
 import * as MailComposer from 'expo-mail-composer';
 
@@ -10,8 +10,11 @@ import styles from './styles';
 
 function Details() {
   const navigation = useNavigation();
+  const route = useRoute();
 
-  const message = 'Olá APAD, estou entrando em contato pois gostaria de ajudar no "Cadelinha atropelada" no valor de R$120,00';
+  const incident = route.params.incident;
+
+  const message = `Olá ${incident.name}, estou entrando em contato pois gostaria de ajudar no "${incident.title}" no valor de ${Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})}`;
 
   function navigateBack() {
     navigation.goBack();
@@ -19,14 +22,14 @@ function Details() {
 
   function sendEmail() {
     MailComposer.composeAsync({
-      subject: 'Herói do caso: Cadelinha atropelada',
-      recipients: ['gabrie.gsantana7@gmail.com'],
+      subject: `Herói do caso: ${incident.title}`,
+      recipients: [incident.email],
       body: message,
     });
   }
 
   function sendWhatsapp() {
-    Linking.openURL(`whatsapp://send?&text=${message}`);
+    Linking.openURL(`whatsapp://send?phone=${incident.whatsapp}&text=${message}`);
   }
 
   return (
@@ -41,19 +44,21 @@ function Details() {
 
       <View style={styles.incidentCard}>
         <Text style={styles.incidentProperty}>CASO:</Text>
-        <Text style={styles.incidentValue}>Cadelinha atropelada</Text>
+        <Text style={styles.incidentValue}>{incident.title}</Text>
 
         <Text style={styles.incidentProperty}>ONG:</Text>
-        <Text style={styles.incidentValue}>APAD</Text>
+        <Text style={styles.incidentValue}>{incident.name}</Text>
 
         <Text style={styles.incidentProperty}>DESCRIÇÃO:</Text>
-        <Text style={styles.incidentValue}>
-          A cadelinha Jolie foi atropelado na rua Souza e precisa de cuidados médicos.
-          A cadelinha Jolie foi atropelado na rua Souza e precisa de cuidados médicos
-        </Text>
+        <Text style={styles.incidentValue}>{incident.description}</Text>
 
         <Text style={styles.incidentProperty}>VALOR:</Text>
-        <Text style={[styles.incidentValue, {marginBottom: 0}]}>R$ 120,00</Text>
+        <Text style={[styles.incidentValue, {marginBottom: 0}]}>
+          {Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+          }).format(incident.value)}
+        </Text>
       </View>
 
       <View style={styles.contactBox}>
