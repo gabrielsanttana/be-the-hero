@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "cross-env NODE_ENV=test && jest"
   },
   "keywords": [],
   "author": "",
