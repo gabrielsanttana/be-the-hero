@@ -17,5 +17,8 @@ describe('The OngController', () => {
         city: "São Paulo",
         uf: "SP",
       });
+
+    expect(response.body).toHaveProperty('id');
+    expect(response.body.id).toHaveLength(8);
   });
 });
