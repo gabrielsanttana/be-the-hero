@@ -1,7 +1,12 @@
 const app = require('../../src/app');
 const request = require('supertest');
+const connection = require('../../src/database/connection');
 
 describe('The OngController', () => {
+  beforeEach(async () => {
+    await connection.migrate.latest();
+  });
+  
   it('creates a new ONG', async () => {
     const response = await request(app)
       .post('/ongs')
