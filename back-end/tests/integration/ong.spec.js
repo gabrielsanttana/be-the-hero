@@ -17,7 +17,5 @@ describe('The OngController', () => {
         city: "São Paulo",
         uf: "SP",
       });
-    
-    console.log(response.body);
   });
 });
