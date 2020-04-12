@@ -10,7 +10,7 @@ module.exports = {
   },
 
   async store(req, res) {
-    const {name, email, whatsapp, city, UF} = req.body;
+    const {name, email, whatsapp, city, uf} = req.body;
 
     const id = generateUniqueID();
 
@@ -20,7 +20,7 @@ module.exports = {
       email,
       whatsapp, 
       city,
-      UF,
+      uf,
     });
 
     return res.json({id});
