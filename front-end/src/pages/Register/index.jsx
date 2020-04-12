@@ -13,7 +13,7 @@ function Register() {
   const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [city, setCity] = useState("");
-  const [UF, setUF] = useState("");
+  const [uf, setUf] = useState("");
 
   const history = useHistory();
 
@@ -25,19 +25,21 @@ function Register() {
       email,
       whatsapp,
       city,
-      UF,
+      uf,
     };
 
     try {
       const response = await api.post('/ongs', ongData);
 
-      alert(`Seu ID de acesso: ${response.data.id}`);
+      alert(`Seu ID de acesso: ${response.data.id}. Utilize-o para fazer o login`);
 
       history.push('/');
     } catch(err) {
+      console.log(err);
+      
       alert('Ocorreu um erro ao realizar seu cadastro. Tente novamente, por favor');
 
-      history.push('/');
+      history.push('/register');
     }
   }
 
@@ -92,8 +94,8 @@ function Register() {
               type="text" 
               placeholder="UF" 
               style={{width: 80}} 
-              value={UF}
-              onChange={(event) => setUF(event.target.value)} 
+              value={uf}
+              onChange={(event) => setUf(event.target.value)} 
             />
           </div>
 
