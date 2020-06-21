@@ -63,8 +63,8 @@ $ npm install
 $ npm start
 ```
 
-A new window with application log will open in the browser
-Then, you can load the app by scanning the QR code with the Expo mobile app or by using the local URL
+<p>A new window with application log will open in the browser</p>
+<p>Then, you can load the app by scanning the QR code with the Expo mobile app or by using the local URL</p>
 
 ## ⚖️ License:
 
