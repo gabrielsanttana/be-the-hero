@@ -4,7 +4,7 @@
 
 <div align="center">An application where non-governmental organizations can post their incidents so that people can help 🦸‍♂️</div>
 
-## 🛠️ Technologies:
+## 🛠️ Technologies
 
 <ul>
   <li><a href="https://nodejs.org/en/">Node.js</a></li>
@@ -17,7 +17,7 @@
   <li><a href="https://socket.io/">Socket.io</a></li>
 </ul>
 
-## ⚙️ Requirements:
+## ⚙️ Requirements
 
 <ul>
   <li><a href="https://nodejs.org/en/">Node.js</a></li>
@@ -26,7 +26,7 @@
   <li><a href="https://expo.io/">Expo CLI</a></li>
 </ul>
 
-## 🚀 Installation:
+## 🚀 Installation
 
 ```
 $ git clone https://github.com/gabrielsanttana/be-the-hero
@@ -66,7 +66,7 @@ $ npm start
 <p>A new window with application log will open in the browser</p>
 <p>Then, you can load the app by scanning the QR code with the Expo mobile app or by using the local URL</p>
 
-## ⚖️ License:
+## ⚖️ License
 
 [MIT License](https://github.com/gabrielsanttana/be-the-hero/blob/master/LICENSE)
 
