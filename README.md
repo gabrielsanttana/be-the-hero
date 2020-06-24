@@ -40,6 +40,8 @@ $ npm migrate
 $ node src/server.js
 ```
 
+The API will start running on http://localhost:3333
+
 #### Web
 
 ```bash
