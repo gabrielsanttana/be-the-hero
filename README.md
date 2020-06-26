@@ -32,7 +32,7 @@
 $ git clone https://github.com/gabrielsanttana/be-the-hero
 ```
 
-#### API
+### API
 ```bash
 $ cd be-the-hero/backend
 $ npm install
@@ -42,7 +42,7 @@ $ node src/server.js
 
 The API will start running on http://localhost:3333
 
-#### Web
+### Web
 
 ```bash
 $ cd be-the-hero/frontend
@@ -52,7 +52,7 @@ $ npm start
 
 The application will pop-up in the browser on http://localhost:3000
 
-#### Mobile
+### Mobile
 
 To run the mobile application, it's necessary to have an React Native Expo environment setup and the Expo mobile app installed on your smartphone. 
 
