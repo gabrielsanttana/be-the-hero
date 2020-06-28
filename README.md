@@ -36,7 +36,7 @@ $ git clone https://github.com/gabrielsanttana/be-the-hero
 ```bash
 $ cd be-the-hero/backend
 $ npm install
-$ npm migrate
+$ npm run migrate
 $ node src/server.js
 ```
 
