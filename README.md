@@ -32,7 +32,7 @@
 $ git clone https://github.com/gabrielsanttana/be-the-hero
 ```
 
-### 📞 API
+### 🗄️ API
 ```bash
 $ cd be-the-hero/backend
 $ npm install
