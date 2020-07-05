@@ -39,11 +39,12 @@ export default StyleSheet.create({
     borderRadius: 8,
     padding: 24,
     backgroundColor: '#fff',
-  },  
+  },
 
   contactBoxTitle: {
     fontSize: 17,
     fontWeight: 'bold',
+    marginBottom: 20,
   },
 
   actions: {
@@ -65,6 +66,6 @@ export default StyleSheet.create({
   actionText: {
     color: '#fff',
     fontSize: 15,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
-}); 
+});

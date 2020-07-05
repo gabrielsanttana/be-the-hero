@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import {Feather} from '@expo/vector-icons';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+import api from '../../services/api';
 
 import logo from '../../assets/logo.png';
 
@@ -20,21 +21,21 @@ function Incidents() {
   }
 
   async function loadIncidents() {
-    if(loading) {
+    if (loading) {
       return;
-    } 
+    }
 
-    if(total > 0 && incidents.length === total) {
+    if (total > 0 && incidents.length === total) {
       return;
     }
 
     setLoading(true);
 
     const response = await api.get('/incidents', {
-      params: {page}
+      params: {page},
     });
-    
-    setIncidents([...prevIncidents, ...response.data]);
+
+    setIncidents([...incidents, ...response.data]);
     setTotal(response.headers['x-total-count']);
     setPage(page + 1);
     setLoading(false);
@@ -54,15 +55,17 @@ function Incidents() {
         </Text>
       </View>
 
-      <Text style={styles.title}>Bem vindo!</Text>
+      <Text style={styles.title}>Boas vindas!</Text>
 
-      <Text style={styles.description}>Escolha um dos casos abaixo e salve o dia</Text>
+      <Text style={styles.description}>
+        Escolha um dos casos abaixo e salve o dia
+      </Text>
 
-      <FlatList 
+      <FlatList
         data={incidents}
         style={styles.incidentList}
         showsVerticalScrollIndicator={false}
-        keyExtractor={incident => String(incident.id)}
+        keyExtractor={(incident) => String(incident.id)}
         onEndReached={loadIncidents}
         onEndReachedThreshold={0.2}
         renderItem={({item: incident}) => (
@@ -74,14 +77,9 @@ function Incidents() {
             <Text style={styles.incidentValue}>{incident.name}</Text>
 
             <Text style={styles.incidentProperty}>VALOR:</Text>
-            <Text style={styles.incidentValue}>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency', 
-                currency: 'BRL'
-              }).format(incident.value)}
-            </Text>
+            <Text style={styles.incidentValue}>{`R$${incident.value}`}</Text>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.detailsButton}
               onPress={() => navigateToDetails(incident)}
             >
