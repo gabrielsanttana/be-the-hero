@@ -17,13 +17,15 @@ export default function Profile() {
   const ongName = localStorage.getItem('ongName');
 
   useEffect(() => {
-    api.get('/profile', {
-      headers: {
-        Authorization: ongID,
-      }
-    }).then(response => {
-      setIncidents(response.data);
-    });
+    api
+      .get('/profile', {
+        headers: {
+          Authorization: ongID,
+        },
+      })
+      .then((response) => {
+        setIncidents(response.data);
+      });
   }, [ongID]);
 
   async function handleDeleteIncident(incident_id) {
@@ -31,11 +33,11 @@ export default function Profile() {
       await api.delete(`/incidents/${incident_id}`, {
         headers: {
           Authorization: ongID,
-        }
+        },
       });
 
-      setIncidents(incidents.filter(incident => incident.id !== incident_id));
-    } catch(err) {
+      setIncidents(incidents.filter((incident) => incident.id !== incident_id));
+    } catch (err) {
       alert('Erro ao excluir caso. Tente novamente');
     }
   }
@@ -51,22 +53,23 @@ export default function Profile() {
       <header>
         <img src={logo} alt="logo" />
 
-        <p>Bem vinda, {ongName}</p>
+        <p>Boas vindas, {ongName}</p>
 
-        <Link to="/incidents/new" className="button">Registrar novo caso</Link>
+        <Link to="/incidents/new" className="button">
+          Registrar novo caso
+        </Link>
 
-        <button onClick={handleLogout}>  
+        <button onClick={handleLogout}>
           <FiPower size={16} color="#e02041" />
-        </button>      
+        </button>
       </header>
 
       <div className="content">
         <h1>Casos registrados</h1>
-      
-        {incidents.length >= 1 ?
+
+        {incidents.length >= 1 ? (
           <ul>
             {incidents.map(({title, description, value, id}) => (
-              
               <li>
                 <strong>CASO:</strong>
 
@@ -76,13 +79,16 @@ export default function Profile() {
 
                 <strong>DESCRIÇÃO:</strong>
 
-                <p>
-                  {description}
-                </p>
+                <p>{description}</p>
 
                 <strong>VALOR:</strong>
 
-                <p>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(value)}</p>
+                <p>
+                  {Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                  }).format(value)}
+                </p>
 
                 <button onClick={() => handleDeleteIncident(id)}>
                   <FiTrash2 size={20} color="#a8a8b3" />
@@ -90,7 +96,9 @@ export default function Profile() {
               </li>
             ))}
           </ul>
-        : <p className="no-incidents">Não há casos registrados no momento</p>}
+        ) : (
+          <p className="no-incidents">Não há casos registrados no momento</p>
+        )}
       </div>
     </div>
   );
