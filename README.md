@@ -14,7 +14,9 @@
   <li><a href="https://expo.io/">Expo</a></li>
   <li><a href="https://www.sqlite.org/index.html">SQLite</a></li>
   <li><a href="http://knexjs.org/">Knex.js</a></li>
-  <li><a href="https://socket.io/">Socket.io</a></li>
+  <li><a href="https://socket.o/">Socket.IO</a></li>
+  <li><a href="https://github.com/arb/celebrate">Celebrate.js</a></li>
+  <li><a href="https://jestjs.io/">Jest</a></li>
 </ul>
 
 ## ⚙️ Requirements
