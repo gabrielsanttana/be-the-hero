@@ -37,7 +37,7 @@ $ git clone https://github.com/gabrielsanttana/be-the-hero
 $ cd be-the-hero/backend
 $ npm install
 $ npm run migrate
-$ npm run dev
+$ npm start
 ```
 
 The API will start running on http://localhost:3333
@@ -53,12 +53,6 @@ $ npm start
 The application will pop-up in the browser on http://localhost:3000
 
 ### 📱 Mobile
-
-As the web and mobile app use the same API, it's necessary to have an environment variable with the local IP address inside a `.env` file in the project root, in order to make React Native able to call the API locally:
-
-```
-LOCAL_IP_ADDRESS=ip_address
-```
 
 It's also necessary to have an React Native Expo environment setup and the Expo mobile app installed on your smartphone.
 It's important that both the smartphone and the computer are connected to the same network and to type the local IP address on the baseURL in the `api.js` file;
