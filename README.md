@@ -6,7 +6,7 @@
 
 <img src="./assets/web_homepage.png" />
 
-<h4 align="center">An application where non-governmental organizations can post their incidents so that people can help 🦸‍♂️</h4>
+<p align="center">An application where non-governmental organizations can post their incidents so that people can help 🦸‍♂️</p>
 
 ## 🛠️ Technologies
 
