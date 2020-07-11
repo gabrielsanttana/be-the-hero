@@ -48,6 +48,8 @@ $ npm start
 
 The API will start running on http://localhost:3333
 
+> Note: It's important to have the API running to be able to properly run the web and mobile app
+
 ### 💻 Web
 
 ```bash
