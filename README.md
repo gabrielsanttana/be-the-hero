@@ -90,3 +90,4 @@ $ npm start
 
 [MIT License](https://github.com/gabrielsanttana/be-the-hero/blob/master/LICENSE)
 
+<h6 align="center">Made with ❤️ by <a href="https://linkedin.com/in/gabrielsanttana">Gabriel Santana</a></h6>
